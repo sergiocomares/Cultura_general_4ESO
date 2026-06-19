@@ -1,0 +1,2323 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cultura general 4.º ESO · preguntas aleatorias</title>
+  <style>
+    :root {
+      --bg1: #0f172a;
+      --bg2: #312e81;
+      --bg3: #7c3aed;
+      --card: rgba(255, 255, 255, 0.94);
+      --text: #111827;
+      --muted: #6b7280;
+      --line: #e5e7eb;
+      --primary: #7c3aed;
+      --primary-dark: #5b21b6;
+      --good: #16a34a;
+      --bad: #dc2626;
+      --warning: #f59e0b;
+      --soft: #f8fafc;
+      --shadow: 0 22px 60px rgba(2, 6, 23, 0.35);
+      --radius: 28px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(255, 255, 255, 0.22), transparent 34%),
+        radial-gradient(circle at bottom right, rgba(236, 72, 153, 0.28), transparent 34%),
+        linear-gradient(135deg, var(--bg1), var(--bg2) 55%, var(--bg3));
+      overflow-x: hidden;
+    }
+
+    .background-shapes {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .blob {
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(1px);
+      opacity: 0.22;
+      animation: float 11s ease-in-out infinite;
+    }
+
+    .blob.one {
+      width: 260px;
+      height: 260px;
+      background: #22d3ee;
+      top: 8%;
+      left: 6%;
+    }
+
+    .blob.two {
+      width: 360px;
+      height: 360px;
+      background: #f472b6;
+      bottom: -90px;
+      right: -70px;
+      animation-delay: -3s;
+    }
+
+    .blob.three {
+      width: 180px;
+      height: 180px;
+      background: #fde047;
+      top: 22%;
+      right: 15%;
+      animation-delay: -6s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-22px) scale(1.04); }
+    }
+
+    .app {
+      position: relative;
+      z-index: 1;
+      width: min(1120px, calc(100% - 28px));
+      margin: 0 auto;
+      padding: 26px 0 36px;
+    }
+
+    header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: center;
+      margin-bottom: 20px;
+      color: white;
+    }
+
+    .title-block h1 {
+      margin: 0;
+      font-size: clamp(2rem, 4.6vw, 4.6rem);
+      line-height: 0.92;
+      letter-spacing: -0.06em;
+    }
+
+    .title-block p {
+      margin: 12px 0 0;
+      max-width: 680px;
+      color: rgba(255,255,255,0.78);
+      font-size: clamp(0.98rem, 1.7vw, 1.16rem);
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 14px;
+      border: 1px solid rgba(255,255,255,0.22);
+      background: rgba(255,255,255,0.12);
+      border-radius: 999px;
+      backdrop-filter: blur(12px);
+      font-weight: 800;
+      margin-bottom: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+    }
+
+    .score-mini {
+      min-width: 178px;
+      padding: 18px;
+      border-radius: 24px;
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.22);
+      color: white;
+      backdrop-filter: blur(14px);
+      box-shadow: 0 14px 45px rgba(0,0,0,0.16);
+      text-align: center;
+    }
+
+    .score-mini .number {
+      font-size: 2.4rem;
+      font-weight: 950;
+      line-height: 1;
+    }
+
+    .score-mini .label {
+      color: rgba(255,255,255,0.78);
+      font-size: 0.9rem;
+      margin-top: 6px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    aside {
+      position: sticky;
+      top: 16px;
+      border-radius: var(--radius);
+      padding: 16px;
+      background: rgba(255,255,255,0.84);
+      border: 1px solid rgba(255,255,255,0.7);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
+    }
+
+    .aside-title {
+      font-weight: 950;
+      margin: 4px 0 12px;
+      color: #312e81;
+    }
+
+    .meter {
+      height: 12px;
+      background: #e9d5ff;
+      border-radius: 99px;
+      overflow: hidden;
+      margin-bottom: 16px;
+      border: 1px solid rgba(124, 58, 237, 0.18);
+    }
+
+    .meter > div {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #06b6d4, #8b5cf6, #ec4899);
+      border-radius: inherit;
+      transition: width 0.35s ease;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .stat {
+      background: #f8fafc;
+      border: 1px solid #e5e7eb;
+      border-radius: 18px;
+      padding: 10px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.4rem;
+      line-height: 1;
+      color: #111827;
+    }
+
+    .stat span {
+      font-size: 0.76rem;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .subject-list {
+      display: grid;
+      gap: 8px;
+    }
+
+    .subject-chip {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 10px;
+      border-radius: 16px;
+      background: #ffffff;
+      border: 1px solid #eef2ff;
+      font-size: 0.84rem;
+      font-weight: 800;
+      color: #374151;
+    }
+
+    .subject-chip .left {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      min-width: 0;
+    }
+
+    .subject-chip .name {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .subject-chip .count {
+      color: #7c3aed;
+      background: #f3e8ff;
+      padding: 3px 8px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+    }
+
+    main {
+      min-width: 0;
+    }
+
+    .card {
+      border-radius: var(--radius);
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,0.8);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      backdrop-filter: blur(16px);
+    }
+
+    .card-top {
+      padding: clamp(18px, 3vw, 30px);
+      background:
+        linear-gradient(135deg, rgba(124, 58, 237, 0.12), rgba(6, 182, 212, 0.12)),
+        #ffffff;
+      border-bottom: 1px solid #edf2f7;
+    }
+
+    .question-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 13px;
+      border-radius: 999px;
+      background: #ede9fe;
+      color: #4c1d95;
+      font-weight: 950;
+      font-size: 0.92rem;
+    }
+
+    .q-number {
+      color: var(--muted);
+      font-weight: 900;
+      background: #f8fafc;
+      border: 1px solid #e5e7eb;
+      border-radius: 999px;
+      padding: 8px 12px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(1.45rem, 3vw, 2.35rem);
+      line-height: 1.12;
+      letter-spacing: -0.035em;
+    }
+
+    .options {
+      padding: clamp(16px, 3vw, 30px);
+      display: grid;
+      gap: 12px;
+    }
+
+    .option {
+      width: 100%;
+      text-align: left;
+      border: 2px solid #e5e7eb;
+      background: white;
+      border-radius: 20px;
+      padding: 16px 18px;
+      font-size: 1rem;
+      font-weight: 850;
+      color: #111827;
+      cursor: pointer;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 12px;
+      align-items: center;
+      transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .option:hover:not(:disabled) {
+      transform: translateY(-2px);
+      border-color: #a78bfa;
+      box-shadow: 0 12px 24px rgba(124, 58, 237, 0.12);
+    }
+
+    .option:disabled {
+      cursor: default;
+    }
+
+    .letter {
+      width: 34px;
+      height: 34px;
+      display: inline-grid;
+      place-items: center;
+      border-radius: 12px;
+      background: #f3f4f6;
+      color: #4c1d95;
+      font-weight: 950;
+    }
+
+    .mark {
+      opacity: 0;
+      font-size: 1.3rem;
+      font-weight: 950;
+    }
+
+    .option.correct {
+      border-color: rgba(22, 163, 74, 0.75);
+      background: #f0fdf4;
+    }
+
+    .option.correct .letter {
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    .option.correct .mark {
+      opacity: 1;
+      color: var(--good);
+    }
+
+    .option.wrong {
+      border-color: rgba(220, 38, 38, 0.75);
+      background: #fef2f2;
+    }
+
+    .option.wrong .letter {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    .option.wrong .mark {
+      opacity: 1;
+      color: var(--bad);
+    }
+
+    .feedback {
+      margin: 0 clamp(16px, 3vw, 30px) clamp(16px, 3vw, 30px);
+      padding: 18px;
+      border-radius: 22px;
+      border: 1px solid #e5e7eb;
+      background: #f8fafc;
+      display: none;
+      animation: pop 0.22s ease-out;
+    }
+
+    .feedback.show {
+      display: block;
+    }
+
+    @keyframes pop {
+      from { transform: translateY(8px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .feedback.good {
+      border-color: rgba(22, 163, 74, 0.32);
+      background: #f0fdf4;
+    }
+
+    .feedback.bad {
+      border-color: rgba(220, 38, 38, 0.32);
+      background: #fef2f2;
+    }
+
+    .feedback h3 {
+      margin: 0 0 8px;
+      font-size: 1.08rem;
+    }
+
+    .feedback p {
+      margin: 0;
+      color: #374151;
+      line-height: 1.55;
+      font-weight: 650;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 clamp(16px, 3vw, 30px) clamp(16px, 3vw, 30px);
+    }
+
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    button.action {
+      border: 0;
+      border-radius: 16px;
+      padding: 12px 18px;
+      font-size: 0.98rem;
+      font-weight: 950;
+      cursor: pointer;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease;
+    }
+
+    button.action:hover {
+      transform: translateY(-1px);
+    }
+
+    button.action:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .primary {
+      color: white;
+      background: linear-gradient(135deg, #7c3aed, #ec4899);
+      box-shadow: 0 14px 24px rgba(124, 58, 237, 0.22);
+    }
+
+    .secondary {
+      color: #312e81;
+      background: #ede9fe;
+    }
+
+    .ghost {
+      color: #374151;
+      background: #f3f4f6;
+    }
+
+    .hint {
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 750;
+    }
+
+    .screen {
+      display: none;
+    }
+
+    .screen.active {
+      display: block;
+    }
+
+    .result-card {
+      border-radius: var(--radius);
+      background: rgba(255,255,255,0.95);
+      border: 1px solid rgba(255,255,255,0.78);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .result-hero {
+      padding: clamp(22px, 4vw, 42px);
+      background:
+        linear-gradient(135deg, rgba(34, 211, 238, 0.16), rgba(236, 72, 153, 0.14)),
+        white;
+      text-align: center;
+    }
+
+    .big-score {
+      font-size: clamp(3rem, 8vw, 6.3rem);
+      line-height: 0.92;
+      font-weight: 1000;
+      letter-spacing: -0.08em;
+      color: #4c1d95;
+      margin: 8px 0 6px;
+    }
+
+    .result-hero h2 {
+      font-size: clamp(1.7rem, 4vw, 3rem);
+    }
+
+    .result-hero p {
+      color: var(--muted);
+      font-weight: 750;
+      margin: 10px auto 0;
+      max-width: 720px;
+      line-height: 1.55;
+    }
+
+    .breakdown {
+      padding: clamp(16px, 3vw, 30px);
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .break {
+      border: 1px solid #e5e7eb;
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 14px;
+    }
+
+    .break strong {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .bar {
+      height: 10px;
+      border-radius: 99px;
+      background: #f1f5f9;
+      overflow: hidden;
+    }
+
+    .bar > div {
+      height: 100%;
+      width: 0%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #22c55e, #7c3aed);
+    }
+
+    .review {
+      padding: 0 clamp(16px, 3vw, 30px) clamp(16px, 3vw, 30px);
+      display: none;
+    }
+
+    .review.show {
+      display: block;
+    }
+
+    .review-item {
+      border: 1px solid #e5e7eb;
+      border-radius: 18px;
+      padding: 13px;
+      background: #fff;
+      margin-bottom: 10px;
+    }
+
+    .review-item .top {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6px;
+      color: var(--muted);
+      font-size: 0.86rem;
+      font-weight: 850;
+    }
+
+    .review-item p {
+      margin: 6px 0;
+      line-height: 1.45;
+    }
+
+    .ok {
+      color: var(--good);
+      font-weight: 950;
+    }
+
+    .ko {
+      color: var(--bad);
+      font-weight: 950;
+    }
+
+    .footer-actions {
+      padding: 0 clamp(16px, 3vw, 30px) clamp(16px, 3vw, 30px);
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    @media (max-width: 860px) {
+      header {
+        grid-template-columns: 1fr;
+      }
+
+      .score-mini {
+        text-align: left;
+        min-width: 0;
+      }
+
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      aside {
+        position: static;
+      }
+
+      .subject-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .breakdown {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .app {
+        width: min(100% - 18px, 1120px);
+        padding-top: 14px;
+      }
+
+      .subject-list {
+        grid-template-columns: 1fr;
+      }
+
+      .option {
+        grid-template-columns: auto 1fr;
+      }
+
+      .mark {
+        display: none;
+      }
+
+      .actions {
+        align-items: stretch;
+      }
+
+      .btn-row, button.action {
+        width: 100%;
+      }
+    }
+
+    .dedication-footer {
+      margin-top: 20px;
+      padding: 18px 20px;
+      border-radius: 24px;
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.24);
+      color: white;
+      text-align: center;
+      font-weight: 950;
+      letter-spacing: -0.01em;
+      box-shadow: 0 14px 45px rgba(0,0,0,0.14);
+      backdrop-filter: blur(14px);
+    }
+
+    .angel-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 12px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      color: #4c1d95;
+      background: #f5f3ff;
+      border: 1px solid #ddd6fe;
+      font-weight: 950;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="background-shapes" aria-hidden="true">
+    <div class="blob one"></div>
+    <div class="blob two"></div>
+    <div class="blob three"></div>
+  </div>
+
+  <div class="app">
+    <header>
+      <section class="title-block">
+        <div class="pill">🌍 Cultura general · 4.º ESO</div>
+        <h1>100 preguntas de cultura general</h1>
+        <p>Actividad autocorregible con preguntas alternadas por materias de 4.º ESO. Al responder, aparece la explicación para aprender del acierto o del error.</p>
+      <div class="angel-chip">💜 Juego dedicado a mi alumno Ángel · Preguntas en orden aleatorio</div>
+      </section>
+      <section class="score-mini" aria-label="Marcador">
+        <div class="number" id="miniScore">0</div>
+        <div class="label">aciertos acumulados</div>
+      </section>
+    </header>
+
+    <section class="layout">
+      <aside>
+        <div class="aside-title">Progreso de la actividad</div>
+        <div class="meter" aria-label="Barra de progreso"><div id="progressBar"></div></div>
+        <div class="stats-grid">
+          <div class="stat"><strong id="answeredCount">0</strong><span>respondidas</span></div>
+          <div class="stat"><strong id="remainingCount">100</strong><span>pendientes</span></div>
+        </div>
+        <div class="aside-title">Materias alternadas</div>
+        <div class="subject-list" id="subjectList"></div>
+      </aside>
+
+      <main>
+        <section id="quizScreen" class="screen active">
+          <article class="card">
+            <div class="card-top">
+              <div class="question-meta">
+                <span class="badge" id="subjectBadge">Materia</span>
+                <span class="q-number" id="questionNumber">Pregunta 1 de 100</span>
+              </div>
+              <h2 id="questionText">Pregunta</h2>
+            </div>
+
+            <div class="options" id="options"></div>
+
+            <div class="feedback" id="feedback">
+              <h3 id="feedbackTitle"></h3>
+              <p id="feedbackText"></p>
+            </div>
+
+            <div class="actions">
+              <div class="hint" id="hintText">Elige una opción para ver la explicación.</div>
+              <div class="btn-row">
+                <button class="action ghost" id="prevBtn">Anterior</button>
+                <button class="action primary" id="nextBtn">Siguiente</button>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <section id="resultScreen" class="screen">
+          <article class="result-card">
+            <div class="result-hero">
+              <div class="pill" style="color:#4c1d95;background:#ede9fe;border-color:#ddd6fe;">🏁 Resultado final</div>
+              <h2>Actividad terminada</h2>
+              <div class="big-score" id="finalScore">0/100</div>
+              <p id="finalMessage">Resumen del resultado.</p>
+              <div class="angel-chip">💜 Juego dedicado a mi alumno Ángel · Preguntas en orden aleatorio</div>
+            </div>
+            <div class="breakdown" id="breakdown"></div>
+            <div class="footer-actions">
+              <button class="action secondary" id="toggleReviewBtn">Ver revisión completa</button>
+              <button class="action primary" id="restartBtn">Reiniciar actividad</button>
+            </div>
+            <div class="review" id="review"></div>
+          </article>
+        </section>
+      </main>
+    </section>
+
+    <footer class="dedication-footer">Juego dedicado a mi alumno Ángel</footer>
+  </div>
+
+  <script>
+    const QUESTIONS = [
+  {
+    "subject": "Matemáticas",
+    "icon": "🧮",
+    "question": "¿Cuál es la solución de 3x - 5 = 16?",
+    "options": [
+      "x = 5",
+      "x = 7",
+      "x = 9",
+      "x = 11"
+    ],
+    "answer": 1,
+    "explanation": "Sumamos 5: 3x = 21. Dividimos entre 3: x = 7."
+  },
+  {
+    "subject": "Lengua Castellana",
+    "icon": "📚",
+    "question": "¿Qué tipo de palabra es “rápidamente”?",
+    "options": [
+      "Sustantivo",
+      "Adjetivo",
+      "Adverbio",
+      "Preposición"
+    ],
+    "answer": 2,
+    "explanation": "Indica cómo se realiza una acción, por eso es un adverbio de modo."
+  },
+  {
+    "subject": "Inglés",
+    "icon": "🇬🇧",
+    "question": "Choose the correct sentence.",
+    "options": [
+      "She have visited London.",
+      "She has visited London.",
+      "She having visited London.",
+      "She has visit London."
+    ],
+    "answer": 1,
+    "explanation": "Con he/she/it en present perfect usamos has + participio."
+  },
+  {
+    "subject": "Geografía e Historia",
+    "icon": "🏛️",
+    "question": "¿En qué siglo comenzó la Revolución Industrial?",
+    "options": [
+      "Siglo XV",
+      "Siglo XVI",
+      "Siglo XVIII",
+      "Siglo XX"
+    ],
+    "answer": 2,
+    "explanation": "Comenzó en Gran Bretaña en la segunda mitad del siglo XVIII."
+  },
+  {
+    "subject": "Física y Química",
+    "icon": "⚗️",
+    "question": "¿Qué magnitud se mide en newtons?",
+    "options": [
+      "Masa",
+      "Fuerza",
+      "Energía",
+      "Temperatura"
+    ],
+    "answer": 1,
+    "explanation": "El newton es la unidad de fuerza en el Sistema Internacional."
+  },
+  {
+    "subject": "Biología y Geología",
+    "icon": "🧬",
+    "question": "¿Cuál es la molécula que contiene la información genética?",
+    "options": [
+      "Glucosa",
+      "ADN",
+      "Agua",
+      "Oxígeno"
+    ],
+    "answer": 1,
+    "explanation": "El ADN contiene la información genética."
+  },
+  {
+    "subject": "Tecnología y Digitalización",
+    "icon": "💻",
+    "question": "¿Qué significa URL?",
+    "options": [
+      "Unidad Rápida Local",
+      "Localizador Uniforme de Recursos",
+      "Usuario Registrado Libre",
+      "Unión de Redes Locales"
+    ],
+    "answer": 1,
+    "explanation": "Una URL identifica direcciones y recursos en internet."
+  },
+  {
+    "subject": "Educación Física",
+    "icon": "🏃",
+    "question": "¿Qué capacidad permite mantener un esfuerzo durante mucho tiempo?",
+    "options": [
+      "Flexibilidad",
+      "Velocidad",
+      "Resistencia",
+      "Coordinación"
+    ],
+    "answer": 2,
+    "explanation": "La resistencia permite sostener un esfuerzo prolongado."
+  },
+  {
+    "subject": "Arte y Cultura",
+    "icon": "🎨",
+    "question": "¿Quién pintó “Las meninas”?",
+    "options": [
+      "Pablo Picasso",
+      "Diego Velázquez",
+      "Francisco de Goya",
+      "Salvador Dalí"
+    ],
+    "answer": 1,
+    "explanation": "“Las meninas” es una obra de Diego Velázquez."
+  },
+  {
+    "subject": "Valores y Ciudadanía",
+    "icon": "🤝",
+    "question": "¿Qué significa actuar con empatía?",
+    "options": [
+      "Imponer la opinión",
+      "Ponerse en el lugar de otra persona",
+      "No escuchar",
+      "Aceptar solo a quien piensa igual"
+    ],
+    "answer": 1,
+    "explanation": "La empatía consiste en comprender cómo se siente otra persona."
+  },
+  {
+    "subject": "Matemáticas",
+    "icon": "🧮",
+    "question": "Si una función lineal tiene pendiente negativa, ¿qué ocurre al aumentar x?",
+    "options": [
+      "La función aumenta",
+      "La función disminuye",
+      "La función siempre vale cero",
+      "No se puede representar"
+    ],
+    "answer": 1,
+    "explanation": "Una pendiente negativa indica que al aumentar x, y disminuye."
+  },
+  {
+    "subject": "Lengua Castellana",
+    "icon": "📚",
+    "question": "¿Cuál de estas oraciones contiene una subordinada?",
+    "options": [
+      "Llegué tarde.",
+      "Juan estudia mucho.",
+      "Quiero que vengas mañana.",
+      "El perro duerme."
+    ],
+    "answer": 2,
+    "explanation": "“Que vengas mañana” depende del verbo principal “quiero”."
+  },
+  {
+    "subject": "Inglés",
+    "icon": "🇬🇧",
+    "question": "What is the past participle of “go”?",
+    "options": [
+      "Goed",
+      "Went",
+      "Gone",
+      "Going"
+    ],
+    "answer": 2,
+    "explanation": "“Gone” es el participio; “went” es el pasado simple."
+  },
+  {
+    "subject": "Geografía e Historia",
+    "icon": "🏛️",
+    "question": "¿Qué acontecimiento se suele tomar como inicio de la Edad Contemporánea?",
+    "options": [
+      "Caída del Imperio romano",
+      "Descubrimiento de América",
+      "Revolución francesa",
+      "Primera Guerra Mundial"
+    ],
+    "answer": 2,
+    "explanation": "La Revolución francesa de 1789 suele marcar el inicio de la Edad Contemporánea."
+  },
+  {
+    "subject": "Física y Química",
+    "icon": "⚗️",
+    "question": "¿Cuál es la fórmula del agua?",
+    "options": [
+      "CO₂",
+      "H₂O",
+      "O₂",
+      "NaCl"
+    ],
+    "answer": 1,
+    "explanation": "El agua tiene dos átomos de hidrógeno y uno de oxígeno."
+  },
+  {
+    "subject": "Biología y Geología",
+    "icon": "🧬",
+    "question": "¿Qué orgánulo realiza la fotosíntesis?",
+    "options": [
+      "Mitocondria",
+      "Cloroplasto",
+      "Ribosoma",
+      "Núcleo"
+    ],
+    "answer": 1,
+    "explanation": "Los cloroplastos contienen clorofila y realizan la fotosíntesis."
+  },
+  {
+    "subject": "Tecnología y Digitalización",
+    "icon": "💻",
+    "question": "¿Qué es un algoritmo?",
+    "options": [
+      "Un virus",
+      "Una secuencia ordenada de instrucciones",
+      "Una pieza física",
+      "Un tipo de pantalla"
+    ],
+    "answer": 1,
+    "explanation": "Un algoritmo es un conjunto de pasos para resolver un problema."
+  },
+  {
+    "subject": "Educación Física",
+    "icon": "🏃",
+    "question": "¿Qué articulación se implica mucho en una sentadilla?",
+    "options": [
+      "Rodilla",
+      "Muñeca",
+      "Codo",
+      "Mandíbula"
+    ],
+    "answer": 0,
+    "explanation": "La sentadilla trabaja especialmente rodillas, caderas y tobillos."
+  },
+  {
+    "subject": "Arte y Cultura",
+    "icon": "🎨",
+    "question": "¿A qué género pertenece una obra escrita para ser representada?",
+    "options": [
+      "Narrativa",
+      "Lírica",
+      "Teatro",
+      "Ensayo"
+    ],
+    "answer": 2,
+    "explanation": "El teatro está pensado para ser representado por personajes."
+  },
+  {
+    "subject": "Valores y Ciudadanía",
+    "icon": "🤝",
+    "question": "¿Qué es un prejuicio?",
+    "options": [
+      "Opinión formada sin conocer bien los hechos",
+      "Conclusión científica",
+      "Norma legal",
+      "Prueba objetiva"
+    ],
+    "answer": 0,
+    "explanation": "Un prejuicio es una opinión previa sin información suficiente."
+  },
+  {
+    "subject": "Matemáticas",
+    "icon": "🧮",
+    "question": "¿Cuál es el valor de √144?",
+    "options": [
+      "10",
+      "11",
+      "12",
+      "14"
+    ],
+    "answer": 2,
+    "explanation": "La raíz cuadrada de 144 es 12 porque 12 · 12 = 144."
+  },
+  {
+    "subject": "Lengua Castellana",
+    "icon": "📚",
+    "question": "¿Qué figura retórica aparece en “Tus ojos son dos luceros”?",
+    "options": [
+      "Hipérbole",
+      "Metáfora",
+      "Anáfora",
+      "Onomatopeya"
+    ],
+    "answer": 1,
+    "explanation": "Se identifica una realidad con otra sin usar “como”: ojos = luceros."
+  },
+  {
+    "subject": "Inglés",
+    "icon": "🇬🇧",
+    "question": "Choose the correct conditional sentence.",
+    "options": [
+      "If I study, I will pass.",
+      "If I will study, I pass.",
+      "If I studied, I will pass.",
+      "If I study, I passed."
+    ],
+    "answer": 0,
+    "explanation": "En primer condicional: if + present simple, will + infinitivo."
+  },
+  {
+    "subject": "Geografía e Historia",
+    "icon": "🏛️",
+    "question": "¿Qué país fue gobernado por Napoleón Bonaparte?",
+    "options": [
+      "España",
+      "Francia",
+      "Italia",
+      "Alemania"
+    ],
+    "answer": 1,
+    "explanation": "Napoleón fue una figura política y militar fundamental en Francia."
+  },
+  {
+    "subject": "Física y Química",
+    "icon": "⚗️",
+    "question": "¿Qué partícula tiene carga negativa?",
+    "options": [
+      "Protón",
+      "Neutrón",
+      "Electrón",
+      "Núcleo"
+    ],
+    "answer": 2,
+    "explanation": "El electrón tiene carga negativa."
+  },
+  {
+    "subject": "Biología y Geología",
+    "icon": "🧬",
+    "question": "¿Qué teoría explica la diversidad de especies mediante selección natural?",
+    "options": [
+      "Teoría celular",
+      "Teoría de la evolución",
+      "Teoría geocéntrica",
+      "Teoría atómica"
+    ],
+    "answer": 1,
+    "explanation": "La teoría de la evolución explica los cambios de las especies en el tiempo."
+  },
+  {
+    "subject": "Tecnología y Digitalización",
+    "icon": "💻",
+    "question": "¿Qué componente almacena datos de forma permanente?",
+    "options": [
+      "RAM",
+      "Disco duro o SSD",
+      "Procesador",
+      "Ventilador"
+    ],
+    "answer": 1,
+    "explanation": "El disco o SSD mantiene información incluso al apagar el equipo."
+  },
+  {
+    "subject": "Educación Física",
+    "icon": "🏃",
+    "question": "¿Qué se debe hacer antes de una actividad física intensa?",
+    "options": [
+      "Saltarse el calentamiento",
+      "Calentar progresivamente",
+      "Beber solo al final",
+      "Empezar al máximo"
+    ],
+    "answer": 1,
+    "explanation": "El calentamiento reduce el riesgo de lesión."
+  },
+  {
+    "subject": "Arte y Cultura",
+    "icon": "🎨",
+    "question": "¿Qué movimiento artístico se asocia con Picasso y Braque?",
+    "options": [
+      "Cubismo",
+      "Barroco",
+      "Románico",
+      "Impresionismo"
+    ],
+    "answer": 0,
+    "explanation": "Picasso y Braque fueron figuras clave del cubismo."
+  },
+  {
+    "subject": "Valores y Ciudadanía",
+    "icon": "🤝",
+    "question": "¿Qué es la igualdad de oportunidades?",
+    "options": [
+      "Mismas capacidades",
+      "No tener normas",
+      "Acceso a posibilidades justas",
+      "Mismo resultado siempre"
+    ],
+    "answer": 2,
+    "explanation": "Busca condiciones justas para que las personas puedan desarrollarse."
+  },
+  {
+    "subject": "Matemáticas",
+    "icon": "🧮",
+    "question": "¿Qué representa la pendiente de una recta?",
+    "options": [
+      "El corte con el eje Y",
+      "La inclinación de la recta",
+      "El área bajo la recta",
+      "El número de soluciones"
+    ],
+    "answer": 1,
+    "explanation": "La pendiente mide la inclinación de la recta y cómo cambia y respecto a x."
+  },
+  {
+    "subject": "Lengua Castellana",
+    "icon": "📚",
+    "question": "¿Qué es un texto argumentativo?",
+    "options": [
+      "Cuenta una historia ficticia",
+      "Defiende una idea con razones",
+      "Solo describe objetos",
+      "Está compuesto solo por diálogos"
+    ],
+    "answer": 1,
+    "explanation": "El texto argumentativo pretende convencer o defender una opinión con argumentos."
+  },
+  {
+    "subject": "Inglés",
+    "icon": "🇬🇧",
+    "question": "What does “although” mean in Spanish?",
+    "options": [
+      "Porque",
+      "Aunque",
+      "Entonces",
+      "Además"
+    ],
+    "answer": 1,
+    "explanation": "“Although” introduce contraste y significa “aunque”."
+  },
+  {
+    "subject": "Geografía e Historia",
+    "icon": "🏛️",
+    "question": "¿Qué conflicto tuvo lugar entre 1914 y 1918?",
+    "options": [
+      "Guerra Fría",
+      "Primera Guerra Mundial",
+      "Segunda Guerra Mundial",
+      "Guerra de Independencia española"
+    ],
+    "answer": 1,
+    "explanation": "La Primera Guerra Mundial se desarrolló entre 1914 y 1918."
+  },
+  {
+    "subject": "Física y Química",
+    "icon": "⚗️",
+    "question": "¿Cuál es la unidad de energía en el Sistema Internacional?",
+    "options": [
+      "Julio",
+      "Newton",
+      "Metro",
+      "Amperio"
+    ],
+    "answer": 0,
+    "explanation": "La energía se mide en julios, símbolo J."
+  },
+  {
+    "subject": "Biología y Geología",
+    "icon": "🧬",
+    "question": "¿Qué sistema transporta oxígeno y nutrientes por la sangre?",
+    "options": [
+      "Digestivo",
+      "Circulatorio",
+      "Nervioso",
+      "Locomotor"
+    ],
+    "answer": 1,
+    "explanation": "El sistema circulatorio transporta sustancias mediante la sangre."
+  },
+  {
+    "subject": "Tecnología y Digitalización",
+    "icon": "💻",
+    "question": "¿Qué práctica mejora la seguridad de una contraseña?",
+    "options": [
+      "Usar 123456",
+      "Usar la misma siempre",
+      "Combinar letras, números y símbolos",
+      "Compartirla"
+    ],
+    "answer": 2,
+    "explanation": "Una contraseña fuerte combina caracteres variados y no se comparte."
+  },
+  {
+    "subject": "Educación Física",
+    "icon": "🏃",
+    "question": "¿Qué capacidad permite mover una articulación con amplitud?",
+    "options": [
+      "Velocidad",
+      "Flexibilidad",
+      "Fuerza máxima",
+      "Resistencia aeróbica"
+    ],
+    "answer": 1,
+    "explanation": "La flexibilidad se relaciona con la amplitud de movimiento."
+  },
+  {
+    "subject": "Arte y Cultura",
+    "icon": "🎨",
+    "question": "¿Qué instrumento pertenece a la familia de cuerda?",
+    "options": [
+      "Flauta",
+      "Trompeta",
+      "Violín",
+      "Tambor"
+    ],
+    "answer": 2,
+    "explanation": "El violín produce sonido mediante cuerdas."
+  },
+  {
+    "subject": "Valores y Ciudadanía",
+    "icon": "🤝",
+    "question": "¿Qué es la libertad de expresión?",
+    "options": [
+      "Decir todo sin consecuencias",
+      "Expresar ideas respetando derechos y leyes",
+      "Obligar a pensar igual",
+      "Eliminar opiniones contrarias"
+    ],
+    "answer": 1,
+    "explanation": "Debe convivir con otros derechos y responsabilidades."
+  },
+  {
+    "subject": "Matemáticas",
+    "icon": "🧮",
+    "question": "¿Cuál es la probabilidad de sacar un 6 al lanzar un dado equilibrado?",
+    "options": [
+      "1/2",
+      "1/3",
+      "1/6",
+      "6/1"
+    ],
+    "answer": 2,
+    "explanation": "Hay 6 resultados posibles y solo uno es favorable."
+  },
+  {
+    "subject": "Lengua Castellana",
+    "icon": "📚",
+    "question": "¿Cuál es el núcleo del predicado?",
+    "options": [
+      "El sustantivo",
+      "El verbo",
+      "El adjetivo",
+      "El determinante"
+    ],
+    "answer": 1,
+    "explanation": "El núcleo del predicado es el verbo."
+  },
+  {
+    "subject": "Inglés",
+    "icon": "🇬🇧",
+    "question": "Choose the passive voice sentence.",
+    "options": [
+      "They built the bridge.",
+      "The bridge was built.",
+      "They are building the bridge.",
+      "They will build the bridge."
+    ],
+    "answer": 1,
+    "explanation": "En pasiva, el sujeto recibe la acción: “The bridge was built”."
+  },
+  {
+    "subject": "Geografía e Historia",
+    "icon": "🏛️",
+    "question": "¿Qué sistema político se basa en la soberanía del pueblo y elecciones libres?",
+    "options": [
+      "Democracia",
+      "Dictadura",
+      "Absolutismo",
+      "Feudalismo"
+    ],
+    "answer": 0,
+    "explanation": "La democracia se basa en la participación ciudadana y elecciones libres."
+  },
+  {
+    "subject": "Física y Química",
+    "icon": "⚗️",
+    "question": "Si un objeto tiene aceleración positiva en el sentido del movimiento, su velocidad...",
+    "options": [
+      "Disminuye",
+      "Aumenta",
+      "Se hace cero siempre",
+      "No cambia nunca"
+    ],
+    "answer": 1,
+    "explanation": "Una aceleración en el mismo sentido del movimiento hace que aumente la velocidad."
+  },
+  {
+    "subject": "Biología y Geología",
+    "icon": "🧬",
+    "question": "¿Qué son los cromosomas?",
+    "options": [
+      "Órganos respiratorios",
+      "Estructuras que contienen ADN",
+      "Proteínas digestivas",
+      "Partes del esqueleto"
+    ],
+    "answer": 1,
+    "explanation": "Los cromosomas contienen ADN y genes."
+  },
+  {
+    "subject": "Tecnología y Digitalización",
+    "icon": "💻",
+    "question": "¿Qué significa que una imagen tenga mayor resolución?",
+    "options": [
+      "Ocupa siempre menos",
+      "Tiene más detalle o píxeles",
+      "No puede editarse",
+      "No tiene colores"
+    ],
+    "answer": 1,
+    "explanation": "Mayor resolución suele implicar más píxeles y detalle."
+  },
+  {
+    "subject": "Educación Física",
+    "icon": "🏃",
+    "question": "¿Qué músculo se trabaja especialmente en una flexión de brazos?",
+    "options": [
+      "Pectoral",
+      "Gemelo",
+      "Cuádriceps",
+      "Mandíbula"
+    ],
+    "answer": 0,
+    "explanation": "Las flexiones trabajan pectorales, tríceps y hombros."
+  },
+  {
+    "subject": "Arte y Cultura",
+    "icon": "🎨",
+    "question": "¿Qué es una novela?",
+    "options": [
+      "Texto narrativo extenso",
+      "Poema breve",
+      "Noticia periodística",
+      "Instrucción técnica"
+    ],
+    "answer": 0,
+    "explanation": "La novela es una narración extensa con personajes y trama."
+  },
+  {
+    "subject": "Valores y Ciudadanía",
+    "icon": "🤝",
+    "question": "¿Qué significa consumo responsable?",
+    "options": [
+      "Comprar sin pensar",
+      "Elegir según necesidad, impacto y recursos",
+      "Comprar lo más caro",
+      "No comprar nunca"
+    ],
+    "answer": 1,
+    "explanation": "Valora la necesidad real y el impacto social y ambiental."
+  },
+  {
+    "subject": "Matemáticas",
+    "icon": "🧮",
+    "question": "¿Cuál es el resultado de (2³)²?",
+    "options": [
+      "2⁵",
+      "2⁶",
+      "4³",
+      "8³"
+    ],
+    "answer": 1,
+    "explanation": "Al elevar una potencia a otra potencia, multiplicamos exponentes: 3 · 2 = 6."
+  },
+  {
+    "subject": "Lengua Castellana",
+    "icon": "📚",
+    "question": "¿Qué es un campo semántico?",
+    "options": [
+      "Un conjunto de palabras relacionadas por significado",
+      "Una lista sin relación",
+      "Un error ortográfico",
+      "Una clase de verbo"
+    ],
+    "answer": 0,
+    "explanation": "Agrupa palabras relacionadas por un tema o significado común."
+  },
+  {
+    "subject": "Inglés",
+    "icon": "🇬🇧",
+    "question": "Which word is a false friend?",
+    "options": [
+      "Table",
+      "Library",
+      "Actually",
+      "Window"
+    ],
+    "answer": 2,
+    "explanation": "“Actually” suele confundirse con “actualmente”, pero significa “en realidad”."
+  },
+  {
+    "subject": "Geografía e Historia",
+    "icon": "🏛️",
+    "question": "¿Qué fue la Guerra Fría?",
+    "options": [
+      "Un conflicto medieval",
+      "Una tensión política e ideológica entre bloques",
+      "Una guerra exclusiva de España",
+      "Una revolución agrícola"
+    ],
+    "answer": 1,
+    "explanation": "Fue una tensión entre el bloque capitalista y el comunista."
+  },
+  {
+    "subject": "Física y Química",
+    "icon": "⚗️",
+    "question": "¿Qué tipo de cambio es la evaporación del agua?",
+    "options": [
+      "Químico",
+      "Físico",
+      "Nuclear",
+      "Combustión"
+    ],
+    "answer": 1,
+    "explanation": "Cambia el estado, pero no la composición química."
+  },
+  {
+    "subject": "Biología y Geología",
+    "icon": "🧬",
+    "question": "¿Qué proceso permite obtener energía de los nutrientes?",
+    "options": [
+      "Respiración celular",
+      "Fotosíntesis exclusivamente",
+      "Sedimentación",
+      "Evaporación"
+    ],
+    "answer": 0,
+    "explanation": "La respiración celular libera energía a partir de nutrientes."
+  },
+  {
+    "subject": "Tecnología y Digitalización",
+    "icon": "💻",
+    "question": "¿Qué es el phishing?",
+    "options": [
+      "Reciclar archivos",
+      "Un engaño para robar datos",
+      "Un programa para dibujar",
+      "Comprimir fotos"
+    ],
+    "answer": 1,
+    "explanation": "El phishing intenta obtener contraseñas o datos mediante engaño."
+  },
+  {
+    "subject": "Educación Física",
+    "icon": "🏃",
+    "question": "Durante el ejercicio suele aumentar...",
+    "options": [
+      "La frecuencia cardiaca",
+      "El tamaño del hueso",
+      "La longitud del brazo",
+      "La gravedad"
+    ],
+    "answer": 0,
+    "explanation": "El corazón late más rápido para llevar oxígeno a los músculos."
+  },
+  {
+    "subject": "Arte y Cultura",
+    "icon": "🎨",
+    "question": "¿Qué periodo se caracteriza por ornamentación y dramatismo?",
+    "options": [
+      "Barroco",
+      "Minimalismo",
+      "Arte rupestre",
+      "Neoclasicismo puro"
+    ],
+    "answer": 0,
+    "explanation": "El Barroco se caracteriza por dinamismo, contraste y ornamentación."
+  },
+  {
+    "subject": "Valores y Ciudadanía",
+    "icon": "🤝",
+    "question": "¿Qué es la desinformación?",
+    "options": [
+      "Información falsa o manipulada",
+      "Opinión argumentada",
+      "Dato comprobado",
+      "Fuente primaria"
+    ],
+    "answer": 0,
+    "explanation": "Difunde contenidos falsos o manipulados que pueden confundir."
+  },
+  {
+    "subject": "Matemáticas",
+    "icon": "🧮",
+    "question": "En y = ax² + bx + c, si a > 0, la parábola se abre...",
+    "options": [
+      "Hacia abajo",
+      "Hacia arriba",
+      "Siempre hacia la izquierda",
+      "No se puede saber"
+    ],
+    "answer": 1,
+    "explanation": "Cuando a es positivo, la parábola se abre hacia arriba."
+  },
+  {
+    "subject": "Lengua Castellana",
+    "icon": "📚",
+    "question": "¿Quién escribió “Don Quijote de la Mancha”?",
+    "options": [
+      "Federico García Lorca",
+      "Miguel de Cervantes",
+      "Antonio Machado",
+      "Benito Pérez Galdós"
+    ],
+    "answer": 1,
+    "explanation": "La obra fue escrita por Miguel de Cervantes."
+  },
+  {
+    "subject": "Inglés",
+    "icon": "🇬🇧",
+    "question": "Which sentence uses reported speech correctly?",
+    "options": [
+      "He said that he was tired.",
+      "He said that he is tired yesterday.",
+      "He said me he was tired.",
+      "He told that he was tired."
+    ],
+    "answer": 0,
+    "explanation": "La forma correcta es “He said that he was tired”."
+  },
+  {
+    "subject": "Geografía e Historia",
+    "icon": "🏛️",
+    "question": "¿Qué institución representa a los ciudadanos de la Unión Europea?",
+    "options": [
+      "Banco Central Europeo",
+      "Parlamento Europeo",
+      "Consejo de Seguridad de la ONU",
+      "Tribunal Supremo español"
+    ],
+    "answer": 1,
+    "explanation": "El Parlamento Europeo representa a la ciudadanía de la Unión Europea."
+  },
+  {
+    "subject": "Física y Química",
+    "icon": "⚗️",
+    "question": "¿Qué indica el número atómico?",
+    "options": [
+      "Número de protones",
+      "Número de moléculas",
+      "Temperatura de fusión",
+      "Masa en kg"
+    ],
+    "answer": 0,
+    "explanation": "El número atómico indica cuántos protones tiene el núcleo."
+  },
+  {
+    "subject": "Biología y Geología",
+    "icon": "🧬",
+    "question": "¿Qué tipo de roca se forma por enfriamiento del magma o lava?",
+    "options": [
+      "Sedimentaria",
+      "Metamórfica",
+      "Ígnea o magmática",
+      "Orgánica exclusivamente"
+    ],
+    "answer": 2,
+    "explanation": "Las rocas ígneas se forman al enfriarse magma o lava."
+  },
+  {
+    "subject": "Tecnología y Digitalización",
+    "icon": "💻",
+    "question": "¿Qué es una hoja de cálculo?",
+    "options": [
+      "Programa para trabajar con datos en celdas",
+      "Una web sin texto",
+      "Un cable",
+      "Un antivirus"
+    ],
+    "answer": 0,
+    "explanation": "Organiza datos en filas, columnas y celdas."
+  },
+  {
+    "subject": "Educación Física",
+    "icon": "🏃",
+    "question": "¿Qué significa IMC?",
+    "options": [
+      "Índice de Masa Corporal",
+      "Intensidad Máxima de Carrera",
+      "Impulso Muscular Central",
+      "Índice Medio de Calor"
+    ],
+    "answer": 0,
+    "explanation": "IMC significa Índice de Masa Corporal."
+  },
+  {
+    "subject": "Arte y Cultura",
+    "icon": "🎨",
+    "question": "¿Qué es un plano cinematográfico?",
+    "options": [
+      "Mapa de carreteras",
+      "Forma de encuadrar una imagen",
+      "Lista de actores",
+      "Tipo de micrófono"
+    ],
+    "answer": 1,
+    "explanation": "El plano define qué se ve y cómo se encuadra."
+  },
+  {
+    "subject": "Valores y Ciudadanía",
+    "icon": "🤝",
+    "question": "¿Qué significa resolver un conflicto de forma asertiva?",
+    "options": [
+      "Gritar más",
+      "Callarse siempre",
+      "Expresar lo que se piensa respetando",
+      "Imponer por la fuerza"
+    ],
+    "answer": 2,
+    "explanation": "La asertividad defiende ideas sin faltar al respeto."
+  },
+  {
+    "subject": "Matemáticas",
+    "icon": "🧮",
+    "question": "¿Cuál es el área de un círculo de radio r?",
+    "options": [
+      "2πr",
+      "πr²",
+      "πd",
+      "r²"
+    ],
+    "answer": 1,
+    "explanation": "El área del círculo se calcula con A = πr²."
+  },
+  {
+    "subject": "Lengua Castellana",
+    "icon": "📚",
+    "question": "¿Qué es una perífrasis verbal?",
+    "options": [
+      "La unión de formas verbales con significado unitario",
+      "Un adjetivo repetido",
+      "Una palabra sinónima",
+      "Una oración sin verbo"
+    ],
+    "answer": 0,
+    "explanation": "Combina varios verbos para expresar obligación, posibilidad, inicio de acción, etc."
+  },
+  {
+    "subject": "Inglés",
+    "icon": "🇬🇧",
+    "question": "Complete: “I have lived here ___ 2020.”",
+    "options": [
+      "for",
+      "since",
+      "during",
+      "ago"
+    ],
+    "answer": 1,
+    "explanation": "Usamos “since” con el punto de inicio de una acción."
+  },
+  {
+    "subject": "Geografía e Historia",
+    "icon": "🏛️",
+    "question": "¿Qué proceso aumentó la población de las ciudades durante la industrialización?",
+    "options": [
+      "Ruralización",
+      "Urbanización",
+      "Feudalización",
+      "Descolonización"
+    ],
+    "answer": 1,
+    "explanation": "La industrialización impulsó la urbanización."
+  },
+  {
+    "subject": "Física y Química",
+    "icon": "⚗️",
+    "question": "¿Cuál de estas sustancias es sal común?",
+    "options": [
+      "H₂O",
+      "NaCl",
+      "CO₂",
+      "O₂"
+    ],
+    "answer": 1,
+    "explanation": "El cloruro de sodio, NaCl, es la sal común."
+  },
+  {
+    "subject": "Biología y Geología",
+    "icon": "🧬",
+    "question": "¿Qué es un ecosistema?",
+    "options": [
+      "Solo animales",
+      "Seres vivos y medio donde interactúan",
+      "Una roca volcánica",
+      "Una célula aislada"
+    ],
+    "answer": 1,
+    "explanation": "Incluye seres vivos, factores físicos y relaciones entre ellos."
+  },
+  {
+    "subject": "Tecnología y Digitalización",
+    "icon": "💻",
+    "question": "¿Qué es el hardware?",
+    "options": [
+      "Programas",
+      "Partes físicas de un sistema informático",
+      "Contraseña",
+      "Página web"
+    ],
+    "answer": 1,
+    "explanation": "El hardware son los componentes físicos."
+  },
+  {
+    "subject": "Educación Física",
+    "icon": "🏃",
+    "question": "¿Qué nutriente es fuente rápida de energía en esfuerzos intensos?",
+    "options": [
+      "Hidratos de carbono",
+      "Vitaminas exclusivamente",
+      "Agua",
+      "Sales minerales solo"
+    ],
+    "answer": 0,
+    "explanation": "Los hidratos de carbono aportan energía para esfuerzos intensos."
+  },
+  {
+    "subject": "Arte y Cultura",
+    "icon": "🎨",
+    "question": "¿Qué poeta andaluz pertenece a la Generación del 27?",
+    "options": [
+      "Federico García Lorca",
+      "Miguel de Unamuno",
+      "Leopoldo Alas Clarín",
+      "Camilo José Cela"
+    ],
+    "answer": 0,
+    "explanation": "Lorca fue una figura destacada de la Generación del 27."
+  },
+  {
+    "subject": "Valores y Ciudadanía",
+    "icon": "🤝",
+    "question": "¿Qué es la huella ecológica?",
+    "options": [
+      "Marca en la arena",
+      "Medida del impacto de nuestro consumo",
+      "Tipo de fósil",
+      "Ley de tráfico"
+    ],
+    "answer": 1,
+    "explanation": "Estima el impacto ambiental de nuestro modo de vida."
+  },
+  {
+    "subject": "Matemáticas",
+    "icon": "🧮",
+    "question": "¿Cuál es la solución de x² = 49?",
+    "options": [
+      "x = 7 solamente",
+      "x = -7 solamente",
+      "x = 0",
+      "x = 7 o x = -7"
+    ],
+    "answer": 3,
+    "explanation": "Tanto 7² como (-7)² valen 49."
+  },
+  {
+    "subject": "Lengua Castellana",
+    "icon": "📚",
+    "question": "¿Qué función del lenguaje predomina en “Cierra la puerta”?",
+    "options": [
+      "Referencial",
+      "Apelativa",
+      "Poética",
+      "Metalingüística"
+    ],
+    "answer": 1,
+    "explanation": "La función apelativa intenta influir en el receptor."
+  },
+  {
+    "subject": "Inglés",
+    "icon": "🇬🇧",
+    "question": "Which option means “debería”?",
+    "options": [
+      "Could",
+      "Should",
+      "Must have",
+      "May"
+    ],
+    "answer": 1,
+    "explanation": "“Should” se usa para dar consejos o expresar “debería”."
+  },
+  {
+    "subject": "Geografía e Historia",
+    "icon": "🏛️",
+    "question": "¿Qué significa descolonización?",
+    "options": [
+      "Crear nuevas colonias",
+      "Independencia de territorios colonizados",
+      "Construir murallas",
+      "Unir imperios antiguos"
+    ],
+    "answer": 1,
+    "explanation": "Es el proceso por el que colonias pasan a ser Estados independientes."
+  },
+  {
+    "subject": "Física y Química",
+    "icon": "⚗️",
+    "question": "¿Qué representa una reacción química ajustada?",
+    "options": [
+      "Se conservan los átomos",
+      "Desaparece la masa",
+      "No hay productos",
+      "No hay reactivos"
+    ],
+    "answer": 0,
+    "explanation": "Debe haber el mismo número de átomos de cada elemento en reactivos y productos."
+  },
+  {
+    "subject": "Biología y Geología",
+    "icon": "🧬",
+    "question": "¿Qué órgano impulsa la sangre por el cuerpo?",
+    "options": [
+      "Pulmón",
+      "Corazón",
+      "Estómago",
+      "Hígado"
+    ],
+    "answer": 1,
+    "explanation": "El corazón bombea la sangre."
+  },
+  {
+    "subject": "Tecnología y Digitalización",
+    "icon": "💻",
+    "question": "¿Qué es el software?",
+    "options": [
+      "Programas y aplicaciones",
+      "Cables",
+      "Pantalla",
+      "Ratón"
+    ],
+    "answer": 0,
+    "explanation": "El software es la parte lógica: programas y sistemas."
+  },
+  {
+    "subject": "Educación Física",
+    "icon": "🏃",
+    "question": "¿Qué es la coordinación motriz?",
+    "options": [
+      "Realizar movimientos de forma ordenada y eficaz",
+      "No respirar",
+      "Fuerza máxima de una pierna",
+      "Peso corporal"
+    ],
+    "answer": 0,
+    "explanation": "La coordinación organiza movimientos con precisión."
+  },
+  {
+    "subject": "Arte y Cultura",
+    "icon": "🎨",
+    "question": "¿Qué es una sinfonía?",
+    "options": [
+      "Composición musical para orquesta",
+      "Poema breve",
+      "Pintura mural",
+      "Estilo de fotografía"
+    ],
+    "answer": 0,
+    "explanation": "Una sinfonía es una obra amplia generalmente para orquesta."
+  },
+  {
+    "subject": "Valores y Ciudadanía",
+    "icon": "🤝",
+    "question": "¿Qué es la privacidad digital?",
+    "options": [
+      "Publicar todos los datos",
+      "Proteger información personal en internet",
+      "No usar internet",
+      "Compartir contraseñas"
+    ],
+    "answer": 1,
+    "explanation": "Consiste en cuidar qué datos compartimos y cómo se usan."
+  },
+  {
+    "subject": "Matemáticas",
+    "icon": "🧮",
+    "question": "Si dos triángulos tienen sus ángulos iguales, ¿qué podemos afirmar?",
+    "options": [
+      "Son necesariamente iguales",
+      "Son semejantes",
+      "No tienen relación",
+      "Tienen el mismo perímetro"
+    ],
+    "answer": 1,
+    "explanation": "Si tienen los ángulos iguales, son semejantes aunque puedan tener distinto tamaño."
+  },
+  {
+    "subject": "Lengua Castellana",
+    "icon": "📚",
+    "question": "¿Qué es un ensayo?",
+    "options": [
+      "Un texto que reflexiona y argumenta sobre un tema",
+      "Una lista de instrucciones",
+      "Un diálogo teatral exclusivamente",
+      "Una noticia sin opinión"
+    ],
+    "answer": 0,
+    "explanation": "El ensayo desarrolla una reflexión personal y argumentada."
+  },
+  {
+    "subject": "Inglés",
+    "icon": "🇬🇧",
+    "question": "Choose the correct relative pronoun: “The person ___ called you is my brother.”",
+    "options": [
+      "which",
+      "who",
+      "where",
+      "when"
+    ],
+    "answer": 1,
+    "explanation": "Usamos “who” para referirnos a personas."
+  },
+  {
+    "subject": "Geografía e Historia",
+    "icon": "🏛️",
+    "question": "¿Qué es la globalización?",
+    "options": [
+      "Aislamiento total de los países",
+      "Interconexión económica, cultural y tecnológica del mundo",
+      "Una etapa medieval",
+      "La desaparición de internet"
+    ],
+    "answer": 1,
+    "explanation": "La globalización aumenta las relaciones e interdependencias entre países."
+  },
+  {
+    "subject": "Física y Química",
+    "icon": "⚗️",
+    "question": "¿Qué magnitud relaciona masa y volumen?",
+    "options": [
+      "Densidad",
+      "Velocidad",
+      "Presión atmosférica",
+      "Temperatura"
+    ],
+    "answer": 0,
+    "explanation": "La densidad se calcula dividiendo masa entre volumen."
+  },
+  {
+    "subject": "Biología y Geología",
+    "icon": "🧬",
+    "question": "¿Qué es una mutación?",
+    "options": [
+      "Un cambio en el material genético",
+      "Una digestión incompleta",
+      "Un movimiento muscular",
+      "Una capa de la atmósfera"
+    ],
+    "answer": 0,
+    "explanation": "Una mutación es una alteración en la información genética."
+  },
+  {
+    "subject": "Tecnología y Digitalización",
+    "icon": "💻",
+    "question": "¿Qué lenguaje se usa para estructurar una página web?",
+    "options": [
+      "HTML",
+      "Bluetooth",
+      "PNG",
+      "USB"
+    ],
+    "answer": 0,
+    "explanation": "HTML estructura el contenido de las páginas web."
+  },
+  {
+    "subject": "Educación Física",
+    "icon": "🏃",
+    "question": "¿Qué es una lesión por sobrecarga?",
+    "options": [
+      "Lesión por repetir esfuerzos sin recuperación",
+      "Lesión solo por frío",
+      "Mejora inmediata",
+      "Forma de descanso"
+    ],
+    "answer": 0,
+    "explanation": "Aparece por repetición excesiva o falta de recuperación."
+  },
+  {
+    "subject": "Arte y Cultura",
+    "icon": "🎨",
+    "question": "¿Qué caracteriza a una obra abstracta?",
+    "options": [
+      "Representa objetos de forma realista",
+      "No busca representar fielmente la realidad",
+      "Solo usa blanco y negro",
+      "Debe tener texto"
+    ],
+    "answer": 1,
+    "explanation": "El arte abstracto trabaja formas y colores sin copiar la realidad exacta."
+  },
+  {
+    "subject": "Valores y Ciudadanía",
+    "icon": "🤝",
+    "question": "¿Qué significa pensamiento crítico?",
+    "options": [
+      "Criticar sin argumentos",
+      "Analizar información antes de aceptarla",
+      "Creer lo primero que se lee",
+      "Rechazar cualquier dato"
+    ],
+    "answer": 1,
+    "explanation": "Evalúa evidencias, fuentes y argumentos antes de concluir."
+  }
+];
+
+    function shuffleQuestions() {
+      for (let i = QUESTIONS.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [QUESTIONS[i], QUESTIONS[j]] = [QUESTIONS[j], QUESTIONS[i]];
+      }
+    }
+
+    shuffleQuestions();
+
+    const state = {
+      current: 0,
+      selected: Array(QUESTIONS.length).fill(null)
+    };
+
+    const subjectNames = [...new Set(QUESTIONS.map(q => q.subject))];
+    const subjectIcons = Object.fromEntries(QUESTIONS.map(q => [q.subject, q.icon]));
+
+    const els = {
+      miniScore: document.getElementById("miniScore"),
+      answeredCount: document.getElementById("answeredCount"),
+      remainingCount: document.getElementById("remainingCount"),
+      progressBar: document.getElementById("progressBar"),
+      subjectList: document.getElementById("subjectList"),
+      subjectBadge: document.getElementById("subjectBadge"),
+      questionNumber: document.getElementById("questionNumber"),
+      questionText: document.getElementById("questionText"),
+      options: document.getElementById("options"),
+      feedback: document.getElementById("feedback"),
+      feedbackTitle: document.getElementById("feedbackTitle"),
+      feedbackText: document.getElementById("feedbackText"),
+      hintText: document.getElementById("hintText"),
+      prevBtn: document.getElementById("prevBtn"),
+      nextBtn: document.getElementById("nextBtn"),
+      quizScreen: document.getElementById("quizScreen"),
+      resultScreen: document.getElementById("resultScreen"),
+      finalScore: document.getElementById("finalScore"),
+      finalMessage: document.getElementById("finalMessage"),
+      breakdown: document.getElementById("breakdown"),
+      review: document.getElementById("review"),
+      toggleReviewBtn: document.getElementById("toggleReviewBtn"),
+      restartBtn: document.getElementById("restartBtn")
+    };
+
+    function countAnswered() {
+      return state.selected.filter(v => v !== null).length;
+    }
+
+    function countCorrect() {
+      return state.selected.reduce((total, selected, index) => {
+        return total + (selected === QUESTIONS[index].answer ? 1 : 0);
+      }, 0);
+    }
+
+    function updateSidebar() {
+      const answered = countAnswered();
+      const correct = countCorrect();
+      els.miniScore.textContent = correct;
+      els.answeredCount.textContent = answered;
+      els.remainingCount.textContent = QUESTIONS.length - answered;
+      els.progressBar.style.width = `${(answered / QUESTIONS.length) * 100}%`;
+
+      els.subjectList.innerHTML = subjectNames.map(subject => {
+        const total = QUESTIONS.filter(q => q.subject === subject).length;
+        const answeredSubject = QUESTIONS.filter((q, i) => q.subject === subject && state.selected[i] !== null).length;
+        return `
+          <div class="subject-chip">
+            <span class="left"><span>${subjectIcons[subject]}</span><span class="name">${subject}</span></span>
+            <span class="count">${answeredSubject}/${total}</span>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function renderQuestion() {
+      const q = QUESTIONS[state.current];
+      const selected = state.selected[state.current];
+
+      els.subjectBadge.textContent = `${q.icon} ${q.subject}`;
+      els.questionNumber.textContent = `Pregunta ${state.current + 1} de ${QUESTIONS.length}`;
+      els.questionText.textContent = q.question;
+
+      els.options.innerHTML = q.options.map((option, index) => {
+        const isAnswered = selected !== null;
+        const isCorrect = index === q.answer;
+        const isSelected = index === selected;
+        let cls = "";
+        let mark = "";
+
+        if (isAnswered && isCorrect) {
+          cls = "correct";
+          mark = "✓";
+        } else if (isAnswered && isSelected && !isCorrect) {
+          cls = "wrong";
+          mark = "✕";
+        }
+
+        return `
+          <button class="option ${cls}" ${isAnswered ? "disabled" : ""} data-index="${index}">
+            <span class="letter">${String.fromCharCode(65 + index)}</span>
+            <span>${option}</span>
+            <span class="mark">${mark}</span>
+          </button>
+        `;
+      }).join("");
+
+      document.querySelectorAll(".option").forEach(button => {
+        button.addEventListener("click", () => selectAnswer(Number(button.dataset.index)));
+      });
+
+      if (selected === null) {
+        els.feedback.className = "feedback";
+        els.feedbackTitle.textContent = "";
+        els.feedbackText.textContent = "";
+        els.hintText.textContent = "Elige una opción para ver la explicación.";
+      } else {
+        const ok = selected === q.answer;
+        els.feedback.className = `feedback show ${ok ? "good" : "bad"}`;
+        els.feedbackTitle.textContent = ok ? "✅ Correcto" : "❌ No es correcta";
+        els.feedbackText.textContent = q.explanation;
+        els.hintText.textContent = ok ? "Buen trabajo. Puedes continuar." : `La respuesta correcta era: ${q.options[q.answer]}.`;
+      }
+
+      els.prevBtn.disabled = state.current === 0;
+      els.nextBtn.textContent = state.current === QUESTIONS.length - 1 ? "Ver resultado" : "Siguiente";
+      updateSidebar();
+    }
+
+    function selectAnswer(index) {
+      if (state.selected[state.current] !== null) return;
+      state.selected[state.current] = index;
+      renderQuestion();
+    }
+
+    function nextQuestion() {
+      if (state.current < QUESTIONS.length - 1) {
+        state.current += 1;
+        renderQuestion();
+      } else {
+        showResults();
+      }
+    }
+
+    function prevQuestion() {
+      if (state.current > 0) {
+        state.current -= 1;
+        renderQuestion();
+      }
+    }
+
+    function showResults() {
+      els.quizScreen.classList.remove("active");
+      els.resultScreen.classList.add("active");
+
+      const correct = countCorrect();
+      const grade = (correct / QUESTIONS.length * 10).toFixed(2).replace(".", ",");
+      els.finalScore.textContent = `${correct}/${QUESTIONS.length}`;
+      els.finalMessage.textContent = `Calificación orientativa: ${grade} sobre 10. Recuerda que cada explicación sirve para repasar el procedimiento o la idea clave.`;
+
+      els.breakdown.innerHTML = subjectNames.map(subject => {
+        const indexes = QUESTIONS
+          .map((q, i) => q.subject === subject ? i : -1)
+          .filter(i => i !== -1);
+        const total = indexes.length;
+        const correctSubject = indexes.filter(i => state.selected[i] === QUESTIONS[i].answer).length;
+        const pct = total ? Math.round((correctSubject / total) * 100) : 0;
+        return `
+          <div class="break">
+            <strong><span>${subjectIcons[subject]} ${subject}</span><span>${correctSubject}/${total}</span></strong>
+            <div class="bar"><div style="width:${pct}%"></div></div>
+          </div>
+        `;
+      }).join("");
+
+      els.review.innerHTML = QUESTIONS.map((q, i) => {
+        const selected = state.selected[i];
+        const ok = selected === q.answer;
+        const studentAnswer = selected === null ? "Sin responder" : q.options[selected];
+        return `
+          <div class="review-item">
+            <div class="top">
+              <span>${i + 1}. ${q.icon} ${q.subject}</span>
+              <span class="${ok ? "ok" : "ko"}">${ok ? "Correcta" : "Incorrecta"}</span>
+            </div>
+            <p><strong>Pregunta:</strong> ${q.question}</p>
+            <p><strong>Tu respuesta:</strong> ${studentAnswer}</p>
+            <p><strong>Respuesta correcta:</strong> ${q.options[q.answer]}</p>
+            <p><strong>Explicación:</strong> ${q.explanation}</p>
+          </div>
+        `;
+      }).join("");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function restart() {
+      shuffleQuestions();
+      state.current = 0;
+      state.selected = Array(QUESTIONS.length).fill(null);
+      els.resultScreen.classList.remove("active");
+      els.quizScreen.classList.add("active");
+      els.review.classList.remove("show");
+      els.toggleReviewBtn.textContent = "Ver revisión completa";
+      renderQuestion();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    els.nextBtn.addEventListener("click", nextQuestion);
+    els.prevBtn.addEventListener("click", prevQuestion);
+    els.restartBtn.addEventListener("click", restart);
+    els.toggleReviewBtn.addEventListener("click", () => {
+      els.review.classList.toggle("show");
+      els.toggleReviewBtn.textContent = els.review.classList.contains("show")
+        ? "Ocultar revisión completa"
+        : "Ver revisión completa";
+    });
+
+    renderQuestion();
+  </script>
+</body>
+</html>
